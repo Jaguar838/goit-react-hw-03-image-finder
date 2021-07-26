@@ -1,1 +1,1 @@
-[goit-react-hw-03-phonebook](https://Jaguar838.github.io/goit-react-hw-03-phonebook)
+[goit-react-hw-03-image-finder](https://jaguar838.github.io/goit-react-hw-03-image-finder/)
