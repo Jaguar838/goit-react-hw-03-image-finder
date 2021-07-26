@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import uuid from 'react-uuid';
+// import uuid from 'react-uuid';
 import css from './ContactForm.module.css';
 import PropTypes from 'prop-types';
-
+let uuid = 0;
 const INICIAL_STATE = {
     name: '',
     phone: '',
@@ -24,7 +24,8 @@ export class ContactForm extends Component {
         const { onAdd } = this.props;
         const isValidateForm = this.validateForm();
         if (!isValidateForm) return;
-        onAdd({ id: uuid(), name, phone });
+        onAdd({ id: uuid, name, phone });
+        uuid += 1;
         this.resetForm();
     };
 
