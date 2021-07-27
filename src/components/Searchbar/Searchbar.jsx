@@ -1,3 +1,8 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import css from './Searchbar.module.scss
+
 <header className="Searchbar">
   <form className="SearchForm">
     <button type="submit" className="SearchForm-button">
