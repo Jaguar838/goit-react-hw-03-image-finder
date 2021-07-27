@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Layout } from 'UI/Layout';
 import { SectionWrap } from 'UI/SectionWrap';
 import { Spinner } from 'UI/Spinner';
+import { Button } from 'UI/Button';
 import { Modal } from 'UI/Modal';
 import { Searchbar } from 'components/Searchbar';
 import { ImageGallery } from 'components/ImageGallery';
@@ -57,29 +58,27 @@ export default class App extends Component {
         );
     };
 
-    render() {
-        const { filter } = this.state;
-        const visibleContacts = this.getVisibleContacts();
-        return (
-            <Layout>
-                <SectionWrap title="Phonebook">
-                    <ContactForm
-                        onAdd={this.handleAddContact}
-                        onCheckUnique={this.handleCheckUniqueContact}
-                    />
-                </SectionWrap>
-
-                <SectionWrap title="Contact List">
-                    <Filter
-                        filter={filter}
-                        onChange={this.handleChangeFilter}
-                    />
-                    <ContactList
-                        contacts={visibleContacts}
-                        onRemove={this.handleRemoveContact}
-                    />
-                </SectionWrap>
-            </Layout>
-        );
-    }
+ render() {
+    const { images, isLoading, showModal, largeImageURL, error, showButton } =
+      this.state;
+    return (
+        <Layout>
+//         <ToastContainer autoClose={3000} position="top-left" />
+        <SearchBar onSubmit={this.onSubmit} />
+        {error && <p className={styles.Error}>{error}</p>}
+        {images && (
+          <SectionWrap>
+            <ImageGallery images={images} modalImage={this.modalImage} />
+          </SectionWrap>
+        )}
+        {isLoading && <Spinner />}
+        {showButton && !isLoading && <Button onClick={this.getImages} />}
+        {showModal && (
+          <Modal onClose={this.toggleModal}>
+            <img src={largeImageURL} alt="" />
+          </Modal>
+        )}
+<Layout/>
+    );
+  }
 }
