@@ -7,7 +7,9 @@ import css from './Searchbar.module.scss
 <header className="css.Searchbar">
   <form className="css.SearchForm">
     <Button>
-
+              <button type="submit" className="SearchForm-button">
+                    <span className="SearchForm-button-label">Search</span>
+                  </button>
     <input
       className="SearchForm-input"
       type="text"
