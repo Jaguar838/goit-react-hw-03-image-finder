@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Layout } from 'UI/Layout';
 import { SectionWrap } from 'UI/SectionWrap';
-import { ContactForm } from 'components/ContactForm';
-import { ContactList } from 'components/ContactList';
-import { Filter } from 'components/Filter';
-// import testContacts from 'server/contacts.json';
+import { Spinner } from 'UI/Spinner';
+import { Modal } from 'UI/Modal';
+import { Searchbar } from 'components/Searchbar';
+import { ImageGallery } from 'components/ImageGallery';
+
 
 export default class App extends Component {
     state = {
