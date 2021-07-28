@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import css from './Searchbar.module.scss';
 
-import css from './Searchbar.module.scss
-
-<header className="css.Searchbar">
-  <form className="css.SearchForm">
-              <button type="submit" className="SearchForm-button">
-                    <span className="SearchForm-button-label">Search</span>
-                  </button>
-    <input
-      className="SearchForm-input"
-      type="text"
-      autocomplete="off"
-      autofocus
-      placeholder="Search images and photos"
-    />
-  </form>
-</header>
+export class Searchbar extends Component {
+    /* <header className={css.Searchbar}>
+    <form className={css.SearchForm}>
+        <button type="submit" className={css.SearchForm-button}>
+            <span className={css.SearchForm-button-label}>Search</span>
+        </button>
+        <input
+            className={css.SearchForm-input}
+            type="text"
+            autocomplete="off"
+            autofocus
+            placeholder="Search images and photos"
+        />
+    </form>
+</header>; */
+}

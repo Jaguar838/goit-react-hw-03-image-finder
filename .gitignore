@@ -1,7 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+/.temp
 /.vscode
+/.husky
 /node_modules
 /.pnp
 .pnp.js
@@ -20,7 +22,10 @@
 .env.production.local
 .eslintcache
 .dccache
-
+.eslintrc.json
+.huskyrc
+.lintstagedrc
+.jsconfig.json
 # Logs
 logs
 *.log
