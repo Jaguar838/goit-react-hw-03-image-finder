@@ -1,3 +1,5 @@
+<ToastContainer autoClose={3000} position="top-right" />
+
 const KEY = "21828776-3a3234db6b008ce4834511463";
 const URL = 'https://pixabay.com/api/';
 const TUNING = 'image_type=photo&orientation=horizontal';

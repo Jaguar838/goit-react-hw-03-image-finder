@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import css from 'ImageGallery.module.scss';
+import css from './ImageGallery.module.scss';
 
 import PropTypes from 'prop-types';
 

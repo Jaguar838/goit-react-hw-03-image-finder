@@ -7,6 +7,7 @@ import { Modal } from 'UI/Modal';
 import { Searchbar } from 'components/Searchbar';
 import { ImageGallery } from 'components/ImageGallery';
 
+import css from './App.module.scss';
 
 export default class App extends Component {
     state = {
@@ -58,27 +59,37 @@ export default class App extends Component {
         );
     };
 
- render() {
-    const { images, isLoading, showModal, largeImageURL, error, showButton } =
-      this.state;
-    return (
-        <Layout>
-//         <ToastContainer autoClose={3000} position="top-left" />
-        <SearchBar onSubmit={this.onSubmit} />
-        {error && <p className={styles.Error}>{error}</p>}
-        {images && (
-          <SectionWrap>
-            <ImageGallery images={images} modalImage={this.modalImage} />
-          </SectionWrap>
-        )}
-        {isLoading && <Spinner />}
-        {showButton && !isLoading && <Button onClick={this.getImages} />}
-        {showModal && (
-          <Modal onClose={this.toggleModal}>
-            <img src={largeImageURL} alt="" />
-          </Modal>
-        )}
-<Layout/>
-    );
-  }
+    render() {
+        const {
+            images,
+            isLoading,
+            showModal,
+            largeImageURL,
+            error,
+            showButton,
+        } = this.state;
+        return (
+            <Layout>
+                <Searchbar onSubmit={this.onSubmit} />
+                {error && <p className={css.Error}>{error}</p>}
+                {images && (
+                    <SectionWrap>
+                        <ImageGallery
+                            images={images}
+                            modalImage={this.modalImage}
+                        />
+                    </SectionWrap>
+                )}
+                {isLoading && <Spinner />}
+                {showButton && !isLoading && (
+                    <Button onClick={this.getImages} />
+                )}
+                {showModal && (
+                    <Modal onClose={this.toggleModal}>
+                        <img src={largeImageURL} alt="" />
+                    </Modal>
+                )}
+            </Layout>
+        );
+    }
 }
