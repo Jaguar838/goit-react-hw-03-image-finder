@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import css from './Searchbar.module.scss';
+
 const INICIAL_STATE = {
     request: '',
 };
@@ -22,7 +23,7 @@ export class Searchbar extends Component {
         evt.preventDefault();
         const { request } = this.state;
         const { onSubmit } = this.props;
-        if (this.state.request.trim() === '') {
+        if (request.trim() === '') {
             toast.error('Введите поисковый запрос');
             return;
         }
@@ -58,9 +59,3 @@ export class Searchbar extends Component {
         );
     }
 }
-
-Searchbar.propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
-    handleChangeSearch: PropTypes.func.isRequired,
-    searchQuery: PropTypes.string.isRequired,
-};
