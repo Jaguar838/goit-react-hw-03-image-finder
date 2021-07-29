@@ -1,23 +1,21 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-03-phonebook/static/css/main.dd10bfdc.chunk.css",
-    "main.js": "/goit-react-hw-03-phonebook/static/js/main.e7b6af87.chunk.js",
-    "main.js.map": "/goit-react-hw-03-phonebook/static/js/main.e7b6af87.chunk.js.map",
-    "runtime-main.js": "/goit-react-hw-03-phonebook/static/js/runtime-main.ccce52cd.js",
-    "runtime-main.js.map": "/goit-react-hw-03-phonebook/static/js/runtime-main.ccce52cd.js.map",
-    "static/js/2.41bd6e5e.chunk.js": "/goit-react-hw-03-phonebook/static/js/2.41bd6e5e.chunk.js",
-    "static/js/2.41bd6e5e.chunk.js.map": "/goit-react-hw-03-phonebook/static/js/2.41bd6e5e.chunk.js.map",
-    "index.html": "/goit-react-hw-03-phonebook/index.html",
-    "precache-manifest.58d6229a7923fa449f38ae772d0da446.js": "/goit-react-hw-03-phonebook/precache-manifest.58d6229a7923fa449f38ae772d0da446.js",
-    "service-worker.js": "/goit-react-hw-03-phonebook/service-worker.js",
-    "static/css/main.dd10bfdc.chunk.css.map": "/goit-react-hw-03-phonebook/static/css/main.dd10bfdc.chunk.css.map",
-    "static/js/2.41bd6e5e.chunk.js.LICENSE.txt": "/goit-react-hw-03-phonebook/static/js/2.41bd6e5e.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/goit-react-hw-03-phonebook/static/media/montserrat-v15-latin_cyrillic-regular.b3e1c2f0.woff"
+    "main.css": "/goit-react-hw-03-image-finder/static/css/main.a51fe939.chunk.css",
+    "main.js": "/goit-react-hw-03-image-finder/static/js/main.20cb2c82.chunk.js",
+    "main.js.map": "/goit-react-hw-03-image-finder/static/js/main.20cb2c82.chunk.js.map",
+    "runtime-main.js": "/goit-react-hw-03-image-finder/static/js/runtime-main.92d83524.js",
+    "runtime-main.js.map": "/goit-react-hw-03-image-finder/static/js/runtime-main.92d83524.js.map",
+    "static/js/2.91df1fcb.chunk.js": "/goit-react-hw-03-image-finder/static/js/2.91df1fcb.chunk.js",
+    "static/js/2.91df1fcb.chunk.js.map": "/goit-react-hw-03-image-finder/static/js/2.91df1fcb.chunk.js.map",
+    "index.html": "/goit-react-hw-03-image-finder/index.html",
+    "static/css/main.a51fe939.chunk.css.map": "/goit-react-hw-03-image-finder/static/css/main.a51fe939.chunk.css.map",
+    "static/js/2.91df1fcb.chunk.js.LICENSE.txt": "/goit-react-hw-03-image-finder/static/js/2.91df1fcb.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/goit-react-hw-03-image-finder/static/media/montserrat-v15-latin_cyrillic-regular.f263cfd0.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.ccce52cd.js",
-    "static/js/2.41bd6e5e.chunk.js",
-    "static/css/main.dd10bfdc.chunk.css",
-    "static/js/main.e7b6af87.chunk.js"
+    "static/js/runtime-main.92d83524.js",
+    "static/js/2.91df1fcb.chunk.js",
+    "static/css/main.a51fe939.chunk.css",
+    "static/js/main.20cb2c82.chunk.js"
   ]
 }
