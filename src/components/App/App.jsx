@@ -8,6 +8,7 @@ import { Searchbar } from 'components/Searchbar';
 import { ImageGallery } from 'components/ImageGallery';
 
 import css from './App.module.scss';
+// import moduleName from 'module'
 
 export default class App extends Component {
     state = {
