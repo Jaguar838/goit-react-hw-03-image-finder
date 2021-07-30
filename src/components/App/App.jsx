@@ -12,10 +12,13 @@ import css from './App.module.scss';
 
 export default class App extends Component {
     state = {
-        contacts: [],
-        filter: '',
-        name: '',
-        phone: '',
+        images: [],
+        searchQuery: '',
+        page: 1,
+        showModal: false,
+        isLoading: false,
+        largeImageURL: '',
+        showButton: false,
     };
 
     componentDidMount() {
