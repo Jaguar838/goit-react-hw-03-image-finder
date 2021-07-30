@@ -10,6 +10,10 @@ axios.defaults.params = {
     per_page: 12,
 };
 
+export const fetchImg = async ImgByQuery({ query = '', currentPage = 1 }) => {
+  const response = await axios.get("",);
+  return response.data;
+};
 axios({
     method: 'post',
     url: 'logout',
@@ -19,5 +23,7 @@ axios({
         window.location.reload();
     })
     .catch(error => {
-        console.log(error);
+        toast.error(error);
     });
+
+
