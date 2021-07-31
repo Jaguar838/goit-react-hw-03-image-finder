@@ -10,20 +10,15 @@ axios.defaults.params = {
     per_page: 12,
 };
 
-export const fetchImg = async ImgByQuery({ query = '', currentPage = 1 }) => {
-  const response = await axios.get("",);
-  return response.data;
-};
-axios({
-    method: 'post',
-    url: 'logout',
-    baseURL: '/',
-})
-    .then(response => {
-        window.location.reload();
-    })
-    .catch(error => {
-        toast.error(error);
+export const fetchImg = async ImgByQuery({ searchQuery = '', currentPage = 1 }) => {
+  const { data } = await axios.get('', {
+      params: {
+        q: searchQuery,
+        page: currentPage,
+      },
     });
-
-
+  .catch(error => {
+        toast.error(error);
+    };
+  return data.hits;
+};
