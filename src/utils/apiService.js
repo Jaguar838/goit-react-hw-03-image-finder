@@ -16,7 +16,7 @@ export const fetchImg = async ImgByQuery({ searchQuery = '', currentPage = 1 }) 
         q: searchQuery,
         page: currentPage,
       },
-    });
+    })
   .catch(error => {
         toast.error(error);
     };
