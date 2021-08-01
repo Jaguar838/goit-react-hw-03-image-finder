@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 axios.defaults.baseURL = 'https://pixabay.com/api';
 axios.defaults.params = {
@@ -10,15 +8,12 @@ axios.defaults.params = {
     per_page: 12,
 };
 
-export const fetchImg = async ImgByQuery({ searchQuery = '', currentPage = 1 }) => {
-  const { data } = await axios.get('', {
-      params: {
-        q: searchQuery,
-        page: currentPage,
-      },
-    })
-  .catch(error => {
-        toast.error(error);
-    };
-  return data.hits;
+export const fetchImg = async ({ searchQuery = '', currentPage = 1 }) => {
+    const { data } = await axios.get('', {
+        params: {
+            q: searchQuery,
+            page: currentPage,
+        },
+    });
+    return data.hits;
 };

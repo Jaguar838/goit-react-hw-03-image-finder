@@ -1,26 +1,128 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ImageGalleryItem from '../ImageGalleryItem';
+import { fetchImg } from 'utils/apiService';
+import { Spinner } from 'UI/Spinner';
+import { Button } from 'UI/Button';
+import { Modal } from 'UI/Modal';
+// import { toast } from 'react-toastify';
 import css from './ImageGallery.module.scss';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+export class ImageGallery extends Component {
+    state = {
+        images: [],
+        currentPage: 1,
+        isLoading: false,
+        error: null,
+        showModal: false,
+        largeImageURL: null,
+        // status: 'idle',
+    };
 
-export const ImageGallery = ({ images, onClickImg }) => {
-    return (
-        <ul className={css.ImageGallery}>
-            {images.map(({ id, webformatURL, tags, largeImageURL }) => (
-                <ImageGalleryItem
-                    key={id}
-                    webformatURL={webformatURL}
-                    tags={tags}
-                    onClickImg={onClickImg}
-                    largeImageURL={largeImageURL}
-                />
-            ))}
-        </ul>
-    );
-};
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.query !== this.props.query) {
+            this.setState({ currentPage: 1, images: [], error: null }, () =>
+                this.fetchImages(),
+            );
+        }
 
-ImageGallery.propTypes = {
-    images: PropTypes.array.isRequired,
-    onClickImg: PropTypes.func.isRequired,
-};
+        if (prevState.currentPage !== this.state.currentPage) {
+            window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: 'smooth',
+            });
+        }
+    }
+
+    fetchImages = () => {
+        const { currentPage } = this.state;
+        const { query } = this.props;
+
+        const options = {
+            query,
+            currentPage,
+        };
+
+        this.setState({ isLoading: true });
+
+        fetchImg(options)
+            .then(images =>
+                this.setState(prevState => ({
+                    images: [...prevState.images, ...images],
+                    currentPage: prevState.currentPage + 1,
+                })),
+            )
+            .catch(err => this.setState({ err }))
+            .finally(() => this.setState({ isLoading: false }));
+    };
+
+    toggleModal = () => {
+        this.setState(({ showModal }) => ({ showModal: !showModal }));
+        this.setState({ largeImageURL: null });
+    };
+
+    handleModalImage = url => {
+        this.toggleModal();
+        this.setState({ largeImageURL: url });
+    };
+
+    render() {
+        const { showModal, images, error, isLoading, largeImageURL } =
+            this.state;
+        const showButton = images.length > 0;
+
+        return (
+            <>
+                {isLoading && <Spinner />}
+                {error && <h2>{error}</h2>}
+                {error && <p className={css.Error}>{error}</p>}
+                <ul className={css.imageGallery}>
+                    {images.map(({ id, webformatURL, largeImageURL }) => (
+                        <ImageGalleryItem
+                            key={id}
+                            webformatURL={webformatURL}
+                            onToggleModal={this.handleModalImage}
+                            largeImageURL={largeImageURL}
+                        />
+                    ))}
+                </ul>
+
+                {showButton && (
+                    <Button onClick={this.fetchImages} isLoading={isLoading} />
+                )}
+
+                {showModal && (
+                    <Modal onCloseModal={this.toggleModal}>
+                        <img src={largeImageURL} alt="" />
+                    </Modal>
+                )}
+            </>
+        );
+    }
+}
+// ImageGallery.propTypes = {
+//     images: PropTypes.array.isRequired,
+//     onClickImg: PropTypes.func.isRequired,
+// };
+
+//
+
+// {
+//     showButton && !isLoading && <Button onClick={this.getImages} />;
+// }
+// {
+//     showModal && (
+//         <Modal onClose={this.toggleModal}>
+//             <img src={largeImageURL} alt="" />
+//         </Modal>
+//     );
+// }
+
+// const {
+//     images,
+//     isLoading,
+//     showModal,
+//     largeImageURL,
+//     error,
+//     showButton,
+// } = this.state;

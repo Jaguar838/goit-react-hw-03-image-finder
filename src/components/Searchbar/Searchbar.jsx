@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { toast } from 'react-toastify';
+
 import PropTypes from 'prop-types';
 import css from './Searchbar.module.scss';
+import toast from 'react-hot-toast';
 
 const INICIAL_STATE = {
-    request: '',
+    query: '',
 };
+
 export class Searchbar extends Component {
     static propTypes = {
         onSubmit: PropTypes.func.isRequired,
@@ -14,20 +16,19 @@ export class Searchbar extends Component {
     state = INICIAL_STATE;
 
     handleChangeSearch = ({ target }) => {
-        const { request, value } = target;
-        this.setState({ [request]: value.toLowerCase() });
-        console.log(value);
+        this.setState({ query: target.value });
     };
 
     handleSubmit = evt => {
         evt.preventDefault();
-        const { request } = this.state;
+        const { query } = this.state;
+        console.log(query);
         const { onSubmit } = this.props;
-        if (request.trim() === '') {
+        if (query.trim() === '') {
             toast.error('Введите поисковый запрос');
             return;
         }
-        onSubmit({ request });
+        onSubmit(query);
         this.resetSearch();
     };
 
@@ -36,7 +37,7 @@ export class Searchbar extends Component {
     };
 
     render() {
-        const { request } = this.state;
+        const { query } = this.state;
         return (
             <header className={css.Searchbar}>
                 <form onSubmit={this.handleSubmit} className={css.SearchForm}>
@@ -48,11 +49,9 @@ export class Searchbar extends Component {
                     <input
                         className={css.SearchForm_input}
                         type="text"
-                        autocomplete="off"
-                        autofocus
                         placeholder="Search images and photos"
                         onChange={this.handleChangeSearch}
-                        value={request}
+                        value={query}
                     />
                 </form>
             </header>
