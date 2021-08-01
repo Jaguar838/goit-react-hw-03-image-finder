@@ -4,23 +4,23 @@ import PropTypes from 'prop-types';
 
 const ImageGalleryItem = ({
     webformatURL,
-    tags,
+    // tags,
     largeImageURL,
-    onClickImg,
+    onToggleModal,
 }) => {
     return (
         <li className={css.ImageGalleryItem}>
             <img
                 src={webformatURL}
-                alt={tags}
+                alt=""
                 className={css.ImageGalleryItem_image}
                 data-source={largeImageURL}
-                onClick={onClickImg}
+                onClick={() => onToggleModal(largeImageURL)}
             />
         </li>
     );
 };
-
+// alt={tags}
 ImageGalleryItem.propTypes = {
     webformatURL: PropTypes.string.isRequired,
     tags: PropTypes.string.isRequired,
