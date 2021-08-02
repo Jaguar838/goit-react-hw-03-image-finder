@@ -8,7 +8,7 @@ axios.defaults.baseURL = 'https://pixabay.com/api';
 //     per_page: 12,
 // };
 
-export const fetchImg = ({ searchQuery = '', currentPage = 1 }) => {
+const fetchImg = ({ searchQuery = '', currentPage = 1 }) => {
     return axios
         .get('', {
             params: {
@@ -20,5 +20,7 @@ export const fetchImg = ({ searchQuery = '', currentPage = 1 }) => {
                 page: currentPage,
             },
         })
-        .then(({ data }) => console.log(data));
+        .then(({ data }) => data.hits);
 };
+
+export default fetchImg;

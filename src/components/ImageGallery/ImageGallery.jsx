@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ImageGalleryList from '../ImageGalleryList';
-import { fetchImg } from 'utils/apiService';
+import fetchImg from 'utils/apiService';
 import { Spinner } from 'UI/Spinner';
 import { Button } from 'UI/Button';
 import { Modal } from 'UI/Modal';
@@ -20,6 +20,7 @@ export class ImageGallery extends Component {
     };
 
     componentDidUpdate(prevProps, prevState) {
+        console.log('componentDidUpdate');
         if (prevProps.query !== this.props.query) {
             this.setState({ currentPage: 1, images: [], error: null }, () =>
                 this.fetchImages(),
