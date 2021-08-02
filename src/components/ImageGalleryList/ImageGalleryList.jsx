@@ -1,24 +1,40 @@
 import React from 'react';
-import ImageGalleryItem from '../ImageGalleryItem';
 import PropTypes from 'prop-types';
 
 import css from './ImageGalleryList.module.scss';
 
-const ImageGalleryList = ({ images, modalImage }) => {
+const ImageGalleryItem = ({
+    webformatURL,
+    tags,
+    largeImageURL,
+    modalImage,
+}) => {
     return (
-        <ul className={css.ImageGallery}>
-            {images.map(({ id, webformatURL, tags, largeImageURL }) => {
-                const onClickImg = () => modalImage(largeImageURL);
-                return (
-                    <ImageGalleryItem
-                        key={id}
-                        webformatURL={webformatURL}
-                        tags={tags}
-                        onClickImg={onClickImg}
-                        largeImageURL={largeImageURL}
-                    />
-                );
-            })}
+        <li className={css.ImageGalleryItem}>
+            <img
+                className={css.ImageGalleryItem_image}
+                src={webformatURL}
+                alt={tags}
+                data-source={largeImageURL}
+                onClick={modalImage}
+            />
+        </li>
+    );
+};
+
+const ImageGalleryList = ({ images, modalImage }) => {
+    console.log(images);
+    return (
+        <ul className={css.ImageGalleryList}>
+            {images?.map(({ id, webformatURL, tags, largeImageURL }) => (
+                <ImageGalleryItem
+                    key={id}
+                    webformatURL={webformatURL}
+                    tags={tags}
+                    largeImageURL={largeImageURL}
+                    onClickImg={() => modalImage(largeImageURL)}
+                />
+            ))}
         </ul>
     );
 };
