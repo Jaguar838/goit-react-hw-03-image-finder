@@ -6,7 +6,7 @@
 приложения
 [смотри по ссылке](https://drive.google.com/file/d/1oXCGyiq4uKwW0zzraZLKk4lh3voBlBzZ/view?usp=sharing).
 
-Создай компоненты `<Searchbar>`, `<ImageGallery>`, `<ImageGalleryItem>`,
+Создай компоненты `<Searchbar>`, `<ImageGallery>`, `<ImageGalleryList>`,
 `<Loader>`, `<Button>` и `<Modal>`. Готовые стили компонентов можно взять в
 файле [styles.css](./styles.css) и подправить под себя, если необходимо.
 
@@ -64,7 +64,7 @@ Pixabay API поддерживает пагинацию, по умолчанию
 Список карточек изображений. Создает DOM-элемент следующей структуры.
 
 ```html
-<ul className="ImageGallery">
+<ul className="ImageGalleryList">
   <!-- Набор <li> с изображениями -->
 </ul>
 ```
