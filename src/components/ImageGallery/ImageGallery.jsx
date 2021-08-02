@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ImageGalleryItem from '../ImageGalleryItem';
+import ImageGalleryList from '../ImageGalleryList';
 import { fetchImg } from 'utils/apiService';
 import { Spinner } from 'UI/Spinner';
 import { Button } from 'UI/Button';
@@ -76,17 +76,10 @@ export class ImageGallery extends Component {
                 {isLoading && <Spinner />}
                 {error && <h2>{error}</h2>}
                 {error && <p className={css.Error}>{error}</p>}
-                <ul className={css.imageGallery}>
-                    {images.map(({ id, webformatURL, largeImageURL }) => (
-                        <ImageGalleryItem
-                            key={id}
-                            webformatURL={webformatURL}
-                            onToggleModal={this.handleModalImage}
-                            largeImageURL={largeImageURL}
-                        />
-                    ))}
-                </ul>
-
+                <ImageGalleryList
+                    images={images}
+                    modalImage={this.handleModalImage}
+                />
                 {showButton && (
                     <Button onClick={this.fetchImages} isLoading={isLoading} />
                 )}
@@ -100,10 +93,6 @@ export class ImageGallery extends Component {
         );
     }
 }
-// ImageGallery.propTypes = {
-//     images: PropTypes.array.isRequired,
-//     onClickImg: PropTypes.func.isRequired,
-// };
 
 //
 
