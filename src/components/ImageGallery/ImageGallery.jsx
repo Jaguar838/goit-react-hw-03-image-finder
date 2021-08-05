@@ -94,19 +94,6 @@ export class ImageGallery extends Component {
     }
 }
 
-//
-
-// {
-//     showButton && !isLoading && <Button onClick={this.getImages} />;
-// }
-// {
-//     showModal && (
-//         <Modal onClose={this.toggleModal}>
-//             <img src={largeImageURL} alt="" />
-//         </Modal>
-//     );
-// }
-
 // const {
 //     images,
 //     isLoading,
