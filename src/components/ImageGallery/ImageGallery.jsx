@@ -20,7 +20,6 @@ export class ImageGallery extends Component {
     };
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('componentDidUpdate');
         if (prevProps.query !== this.props.query) {
             this.setState({ currentPage: 1, images: [], error: null }, () =>
                 this.fetchImages(),
@@ -39,7 +38,6 @@ export class ImageGallery extends Component {
         console.log('fetchImages');
         const { currentPage } = this.state;
         const { query } = this.props;
-
         const options = {
             query,
             currentPage,

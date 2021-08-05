@@ -17,7 +17,7 @@ export default class App extends Component {
         return (
             <Layout>
                 <Searchbar onSubmit={this.handleSubmitSearchbar} />
-                <ImageGallery modalImage={query} />
+                <ImageGallery query={query} />
             </Layout>
         );
     }
