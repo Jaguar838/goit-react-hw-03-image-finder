@@ -81,7 +81,7 @@ export class ImageGallery extends Component {
                     modalImage={this.handleModalImage}
                 />
                 {showButton && (
-                    <Button onClick={this.fetchImages} isLoading={isLoading} />
+                    <Button onClick={this.fetchImages} isLoading={isLoading} >Load more<Button>
                 )}
 
                 {showModal && (
