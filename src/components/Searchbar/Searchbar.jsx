@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 import css from './Searchbar.module.scss';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 const INICIAL_STATE = {
     query: '',
@@ -22,7 +22,6 @@ export class Searchbar extends Component {
     handleSubmit = evt => {
         evt.preventDefault();
         const { query } = this.state;
-        console.log(query);
         const { onSubmit } = this.props;
         if (query.trim() === '') {
             toast.error('Введите поисковый запрос');
@@ -54,6 +53,7 @@ export class Searchbar extends Component {
                         value={query}
                     />
                 </form>
+<Toaster />
             </header>
         );
     }
