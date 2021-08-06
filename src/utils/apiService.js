@@ -8,9 +8,9 @@ axios.defaults.params = {
     per_page: 12,
 };
 
-const fetchImg = async ({ query = 'dog', page }) => {
+const fetchImg = async ({ query = '', currentPage = 1 }) => {
     const { data } = await axios.get('', {
-        params: { q: query, page },
+        params: { q: query, currentPage },
     });
     return data.hits;
 };

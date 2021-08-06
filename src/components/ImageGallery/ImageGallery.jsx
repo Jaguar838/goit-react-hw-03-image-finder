@@ -16,7 +16,7 @@ export class ImageGallery extends Component {
         error: null,
         showModal: false,
         largeImageURL: null,
-        // status: 'idle',
+        showButton: false,
     };
 
     componentDidUpdate(prevProps, prevState) {
@@ -31,6 +31,10 @@ export class ImageGallery extends Component {
                 top: document.documentElement.scrollHeight,
                 behavior: 'smooth',
             });
+        }
+
+        if (this.state.images.length > 0) {
+            this.setState({ showButton: true });
         }
     }
 
@@ -68,9 +72,14 @@ export class ImageGallery extends Component {
     };
 
     render() {
-        const { showModal, images, error, isLoading, largeImageURL } =
-            this.state;
-        const showButton = images.length > 0;
+        const {
+            showModal,
+            images,
+            error,
+            isLoading,
+            largeImageURL,
+            showButton,
+        } = this.state;
 
         return (
             <>
