@@ -1,17 +1,24 @@
 import React from 'react';
+import Loader from 'react-loader-spinner';
 import PropTypes from 'prop-types';
 import { Btn } from './Button.style';
 
-const Button = ({ children, onClick }) => (
-    <Btn onClick={onClick}>{children}</Btn>
+const Button = ({ onClick, isLoading }) => (
+    <Btn onClick={onClick}>
+        <Loader
+            type="TailSpin"
+            color="#00BFFF"
+            height={20}
+            width={20}
+            visible={isLoading}
+        />
+        {isLoading ? '' : 'Load more'}
+    </Btn>
 );
 
-Button.defaultProps = {
-    children: '',
-};
-
 Button.propTypes = {
-    children: PropTypes.node.isRequired,
+    onClick: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
 };
 
 export default Button;

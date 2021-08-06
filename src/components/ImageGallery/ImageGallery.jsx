@@ -37,6 +37,7 @@ export class ImageGallery extends Component {
     fetchImages = () => {
         console.log('fetchImages');
         const { currentPage } = this.state;
+        console.log(currentPage, 'currentPage');
         const { query } = this.props;
         const options = {
             query,
@@ -81,9 +82,10 @@ export class ImageGallery extends Component {
                     modalImage={this.handleModalImage}
                 />
                 {showButton && (
-                    <Button onClick={this.fetchImages} isLoading={isLoading}>
-                        Load more
-                    </Button>
+                    <Button
+                        onClick={this.fetchImages}
+                        isLoading={isLoading}
+                    ></Button>
                 )}
 
                 {showModal && (
