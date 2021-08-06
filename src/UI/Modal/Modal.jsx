@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
-import PropTypes from "prop-types";
-import s from './Modal.module.css';
+import PropTypes from 'prop-types';
+import css from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -28,8 +28,8 @@ class Modal extends Component {
 
     render() {
         return createPortal(
-            <div className={s.backdrop} onClick={this.handleBackdropClick}>
-                <div className={s.modal}>{this.props.children}</div>
+            <div className={css.backdrop} onClick={this.handleBackdropClick}>
+                <div className={css.modal}>{this.props.children}</div>
             </div>,
             modalRoot,
         );
@@ -37,7 +37,7 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
-  onCloseModal: PropTypes.func.isRequired,
+    onCloseModal: PropTypes.func.isRequired,
 };
 
 export default Modal;
