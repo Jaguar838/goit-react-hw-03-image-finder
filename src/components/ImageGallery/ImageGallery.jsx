@@ -32,10 +32,6 @@ export class ImageGallery extends Component {
                 behavior: 'smooth',
             });
         }
-
-        if (this.state.images.length > 0) {
-            this.setState({ showButton: true });
-        }
     }
 
     fetchImages = () => {
@@ -78,9 +74,9 @@ export class ImageGallery extends Component {
             error,
             isLoading,
             largeImageURL,
-            showButton,
+            // showButton,
         } = this.state;
-
+        const showButton = images.length > 0;
         return (
             <>
                 {isLoading && <Spinner />}
@@ -115,3 +111,7 @@ export class ImageGallery extends Component {
 //     error,
 //     showButton,
 // } = this.state;
+
+// if (this.state.images.length > 0) {
+//     this.setState({ showButton: true });
+// }
