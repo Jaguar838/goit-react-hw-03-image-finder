@@ -16,7 +16,7 @@ const ImageGalleryItem = ({
                 src={webformatURL}
                 alt={tags}
                 data-source={largeImageURL}
-                onClick={() => modalImage(largeImageURL)}
+                onClick={modalImage}
             />
         </li>
     );
@@ -32,7 +32,7 @@ const ImageGalleryList = ({ images, modalImage }) => {
                     webformatURL={webformatURL}
                     tags={tags}
                     largeImageURL={largeImageURL}
-                    onClickImg={modalImage}
+                    onClickImg={() => modalImage(largeImageURL)}
                 />
             ))}
         </ul>
