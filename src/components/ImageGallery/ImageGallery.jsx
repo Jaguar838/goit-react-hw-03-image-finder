@@ -35,9 +35,7 @@ export class ImageGallery extends Component {
     }
 
     fetchImages = () => {
-        console.log('fetchImages');
         const { currentPage } = this.state;
-        console.log(currentPage, 'currentPage');
         const { query } = this.props;
         const options = {
             query,
@@ -76,9 +74,11 @@ export class ImageGallery extends Component {
             largeImageURL,
             // showButton,
         } = this.state;
+
         const showButton = images.length > 0;
         return (
             <>
+                {console.log('largeImageURL', largeImageURL)}
                 {isLoading && <Spinner />}
                 {error && <h2>{error}</h2>}
                 {error && <p className={css.Error}>{error}</p>}
@@ -92,7 +92,6 @@ export class ImageGallery extends Component {
                         isLoading={isLoading}
                     ></Button>
                 )}
-
                 {showModal && (
                     <Modal onCloseModal={this.toggleModal}>
                         <img src={largeImageURL} alt="" />
