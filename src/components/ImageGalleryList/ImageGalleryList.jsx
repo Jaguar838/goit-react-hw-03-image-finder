@@ -7,7 +7,6 @@ const ImageGalleryItem = ({
     webformatURL,
     tags,
     largeImageURL,
-    modalImage,
 }) => {
     return (
         <li className={css.ImageGalleryItem}>
@@ -16,7 +15,6 @@ const ImageGalleryItem = ({
                 src={webformatURL}
                 alt={tags}
                 data-url={largeImageURL}
-                onClick={modalImage}
             />
         </li>
     );
@@ -25,14 +23,14 @@ const ImageGalleryItem = ({
 const ImageGalleryList = ({ images, modalImage }) => {
     console.log(images);
     return (
-        <ul className={css.ImageGalleryList}>
+        <ul className={css.ImageGalleryList}  onClickImg={() => modalImage(images.largeImageURL)}>
             {images?.map(({ id, webformatURL, tags, largeImageURL }) => (
                 <ImageGalleryItem
                     key={id}
                     webformatURL={webformatURL}
                     tags={tags}
                     largeImageURL={largeImageURL}
-                    onClickImg={() => modalImage(largeImageURL)}
+                   
                 />
             ))}
         </ul>
