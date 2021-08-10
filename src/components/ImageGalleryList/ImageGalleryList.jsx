@@ -15,7 +15,7 @@ const ImageGalleryItem = ({
                 className={css.ImageGalleryItem_image}
                 src={webformatURL}
                 alt={tags}
-                data-source={largeImageURL}
+                data-url={largeImageURL}
                 onClick={modalImage}
             />
         </li>

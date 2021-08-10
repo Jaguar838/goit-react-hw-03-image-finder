@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ImageGalleryList from '../ImageGalleryList';
 import fetchImg from 'utils/apiService';
+import { scroll } from 'utils/scroll';
 import { Spinner } from 'UI/Spinner';
 import { Button } from 'UI/Button';
 import { Modal } from 'UI/Modal';
@@ -27,10 +28,7 @@ export class ImageGallery extends Component {
         }
 
         if (prevState.currentPage !== this.state.currentPage) {
-            window.scrollTo({
-                top: document.documentElement.scrollHeight,
-                behavior: 'smooth',
-            });
+            scroll();
         }
     }
 
@@ -75,7 +73,7 @@ export class ImageGallery extends Component {
             // showButton,
         } = this.state;
 
-        const showButton = images.length > 0;
+        const showButton = !(images.length % 12) && images.length > 0;
         return (
             <>
                 {console.log('largeImageURL', largeImageURL)}

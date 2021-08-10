@@ -1,1 +1,1 @@
-export { fetchImg } from './apiService';
+export { fetchImg, scroll } from './apiService';
