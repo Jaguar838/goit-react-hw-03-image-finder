@@ -27,9 +27,9 @@ export class ImageGallery extends Component {
             );
         }
 
-        if (prevState.currentPage !== this.state.currentPage) {
-            scroll();
-        }
+//         if (prevState.currentPage !== this.state.currentPage) {
+//             scroll();
+//         }
     }
 
     fetchImages = () => {
@@ -50,7 +50,9 @@ export class ImageGallery extends Component {
                 })),
             )
             .catch(err => this.setState({ err }))
-            .finally(() => this.setState({ isLoading: false }));
+            .finally(() =>{ 
+            scroll();
+            this.setState({ isLoading: false })});
     };
 
     toggleModal = () => {
