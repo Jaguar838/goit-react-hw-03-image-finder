@@ -7,7 +7,11 @@ axios.defaults.params = {
     orientation: 'horizontal',
     per_page: 12,
 };
-
+/**
+ *
+ * @param {string} query - keyword for to find images
+ * @param {number} currentPage - the number page on pixabay
+ */
 const fetchImg = async ({ query = '', currentPage = 1 }) => {
     const { data } = await axios.get('', {
         params: { q: query, page: currentPage },
