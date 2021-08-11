@@ -57,7 +57,7 @@ export class ImageGallery extends Component {
 
     toggleModal = () => {
         this.setState(({ showModal }) => ({ showModal: !showModal }));
-        this.setState({ largeImageURL: null });
+//         this.setState({ largeImageURL: null });
     };
 
     handleModalImage = url => {
