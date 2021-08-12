@@ -5,7 +5,7 @@ import { scroll } from 'utils/scroll';
 import { Spinner } from 'UI/Spinner';
 import { Button } from 'UI/Button';
 import { Modal } from 'UI/Modal';
-// import { toast } from 'react-toastify';
+// import toast, { Toaster } from 'react-hot-toast';
 import css from './ImageGallery.module.scss';
 
 // import PropTypes from 'prop-types';
@@ -26,10 +26,6 @@ export class ImageGallery extends Component {
                 this.fetchImages(),
             );
         }
-
-//         if (prevState.currentPage !== this.state.currentPage) {
-//             scroll();
-//         }
     }
 
     fetchImages = () => {
@@ -50,9 +46,10 @@ export class ImageGallery extends Component {
                 })),
             )
             .catch(err => this.setState({ err }))
-            .finally(() =>{ 
-            scroll();
-            this.setState({ isLoading: false })});
+            .finally(() => {
+                scroll();
+                this.setState({ isLoading: false });
+            });
     };
 
     toggleModal = () => {
@@ -101,16 +98,3 @@ export class ImageGallery extends Component {
         );
     }
 }
-
-// const {
-//     images,
-//     isLoading,
-//     showModal,
-//     largeImageURL,
-//     error,
-//     showButton,
-// } = this.state;
-
-// if (this.state.images.length > 0) {
-//     this.setState({ showButton: true });
-// }

@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 
 import css from './ImageGalleryList.module.scss';
 
-const ImageGalleryItem = ({ webformatURL, tags, largeImageURL }) => {
+const ImageGalleryItem = ({
+    webformatURL,
+    tags,
+    largeImageURL,
+    openModalImage,
+}) => {
     return (
         <li className={css.ImageGalleryItem}>
             <img
@@ -11,26 +16,27 @@ const ImageGalleryItem = ({ webformatURL, tags, largeImageURL }) => {
                 src={webformatURL}
                 alt={tags}
                 data-url={largeImageURL}
+                onClick={openModalImage}
             />
         </li>
     );
 };
 
 const ImageGalleryList = ({ images, modalImage }) => {
-    console.log(images.largeImageURL);
     return (
-        <ul
-            className={css.ImageGalleryList}
-            onClick={() => modalImage(images.largeImageURL)}
-        >
-            {images?.map(({ id, webformatURL, tags, largeImageURL }) => (
-                <ImageGalleryItem
-                    key={id}
-                    webformatURL={webformatURL}
-                    tags={tags}
-                    largeImageURL={largeImageURL}
-                />
-            ))}
+        <ul className={css.ImageGalleryList}>
+            {images?.map(({ id, webformatURL, tags, largeImageURL }) => {
+                const openModalImage = () => modalImage(largeImageURL);
+                return (
+                    <ImageGalleryItem
+                        key={id}
+                        webformatURL={webformatURL}
+                        tags={tags}
+                        largeImageURL={largeImageURL}
+                        openModalImage={openModalImage}
+                    />
+                );
+            })}
         </ul>
     );
 };
