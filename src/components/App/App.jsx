@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Layout } from 'UI/Layout';
 import { Searchbar } from 'components/Searchbar';
-import { ImageGallery } from 'components/ImageGallery';
+import ImageGallery from 'components/ImageGallery';
 
 export default class App extends Component {
     state = {

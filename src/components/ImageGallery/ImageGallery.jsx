@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ImageGalleryList from '../ImageGalleryList';
-import fetchImg from 'utils/apiService';
+import { connect } from 'react-redux';
+import { getGalleryItems } from 'redux/operation';
+import { galleryItems } from 'redux/selectors';
 import { scroll } from 'utils/scroll';
 import { Spinner } from 'UI/Spinner';
 import { Button } from 'UI/Button';
@@ -9,7 +11,7 @@ import { Modal } from 'UI/Modal';
 import css from './ImageGallery.module.scss';
 
 // import PropTypes from 'prop-types';
-export class ImageGallery extends Component {
+class ImageGallery extends Component {
     state = {
         images: [],
         currentPage: 1,
@@ -22,35 +24,36 @@ export class ImageGallery extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.query !== this.props.query) {
-            this.setState({ currentPage: 1, images: [], error: null }, () =>
-                this.fetchImages(),
-            );
+            // this.setState({ currentPage: 1, images: [], error: null }, () =>
+            //     this.fetchImages(),
+            // );
+            this.props.getGalleryItems(this.props.query);
         }
     }
 
-    fetchImages = () => {
-        const { currentPage } = this.state;
-        const { query } = this.props;
-        const options = {
-            query,
-            currentPage,
-        };
+    // fetchImages = () => {
+    //     const { currentPage } = this.state;
+    //     const { query } = this.props;
+    //     const options = {
+    //         query,
+    //         currentPage,
+    //     };
 
-        this.setState({ isLoading: true });
+    //     this.setState({ isLoading: true });
 
-        fetchImg(options)
-            .then(images =>
-                this.setState(prevState => ({
-                    images: [...prevState.images, ...images],
-                    currentPage: prevState.currentPage + 1,
-                })),
-            )
-            .catch(err => this.setState({ err }))
-            .finally(() => {
-                scroll();
-                this.setState({ isLoading: false });
-            });
-    };
+    //     fetchImg(options)
+    //         .then(images =>
+    //             this.setState(prevState => ({
+    //                 images: [...prevState.images, ...images],
+    //                 currentPage: prevState.currentPage + 1,
+    //             })),
+    //         )
+    //         .catch(err => this.setState({ err }))
+    //         .finally(() => {
+    //             scroll();
+    //             this.setState({ isLoading: false });
+    //         });
+    // };
 
     toggleModal = () => {
         this.setState(({ showModal }) => ({ showModal: !showModal }));
@@ -65,13 +68,13 @@ export class ImageGallery extends Component {
     render() {
         const {
             showModal,
-            images,
+            // images,
             error,
             isLoading,
             largeImageURL,
             // showButton,
         } = this.state;
-
+        const { images } = this.props;
         const showButton = !(images.length % 12) && images.length > 0;
         return (
             <>
@@ -98,3 +101,12 @@ export class ImageGallery extends Component {
         );
     }
 }
+
+const mapStateToProps = store => {
+    return {
+        images: galleryItems(store),
+    };
+};
+
+const mapDispatchToProps = { getGalleryItems };
+export default connect(mapStateToProps, mapDispatchToProps)(ImageGallery);
