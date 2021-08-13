@@ -17,10 +17,9 @@ export class ImageGallery extends Component {
         error: null,
         showModal: false,
         largeImageURL: null,
-        showButton: false,
     };
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (prevProps.query !== this.props.query) {
             this.setState({ currentPage: 1, images: [], error: null }, () =>
                 this.fetchImages(),
@@ -63,19 +62,12 @@ export class ImageGallery extends Component {
     };
 
     render() {
-        const {
-            showModal,
-            images,
-            error,
-            isLoading,
-            largeImageURL,
-            // showButton,
-        } = this.state;
+        const { showModal, images, error, isLoading, largeImageURL } =
+            this.state;
 
         const showButton = !(images.length % 12) && images.length > 0;
         return (
             <>
-                {console.log('largeImageURL', largeImageURL)}
                 {isLoading && <Spinner />}
                 {error && <h2>{error}</h2>}
                 {error && <p className={css.Error}>{error}</p>}
