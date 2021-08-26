@@ -27,14 +27,12 @@ const ImageGalleryList = ({ images, modalImage }) => {
     return (
         <ul className={css.ImageGalleryList}>
             {images?.map(({ id, webformatURL, tags, largeImageURL }) => {
-                //const openModalImage = () => modalImage(largeImageURL);
                 return (
                     <ImageGalleryItem
                         key={uuidv4()}
                         webformatURL={webformatURL}
                         tags={tags}
                         largeImageURL={largeImageURL}
-                        //openModalImage={openModalImage}
                         modalImage={modalImage}
                     />
                 );
